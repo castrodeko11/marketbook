@@ -1,12 +1,15 @@
 package br.com.aco.marketbook.marketbook.service
 
+import br.com.aco.marketbook.marketbook.enums.CustomerStatus
 import br.com.aco.marketbook.marketbook.model.CustomerModel
 import br.com.aco.marketbook.marketbook.repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 @Service
 class CustomerService(
-    val customerRepository: CustomerRepository
+    val customerRepository: CustomerRepository,
+    val bookService: BookService
+
 ) {
 
     fun getAllCustomer(name: String?): List<CustomerModel> {
@@ -21,7 +24,7 @@ class CustomerService(
     }
 
 
-    fun getById(id: Int): CustomerModel {
+    fun findById(id: Int): CustomerModel {
         return customerRepository.findById(id).orElseThrow()
     }
 
@@ -33,10 +36,11 @@ class CustomerService(
     }
 
     fun delete(id: Int) {
-        if (!customerRepository.existsById(id)) {
-            throw Exception("Customer not found")
-        }
-        customerRepository.deleteById(id)
+        val customer = findById(id)
+        bookService.deleteByCustomer(customer)
+
+        customer.status = CustomerStatus.DISABLE
+        customerRepository.save(customer)
     }
 }
 

@@ -2,11 +2,9 @@ package br.com.aco.marketbook.marketbook.service
 
 import br.com.aco.marketbook.marketbook.enums.BookStatus
 import br.com.aco.marketbook.marketbook.model.BookModel
+import br.com.aco.marketbook.marketbook.model.CustomerModel
 import br.com.aco.marketbook.marketbook.repository.BookRepository
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.ResponseStatus
 
 @Service
 class BookService(
@@ -39,4 +37,11 @@ class BookService(
         bookRepository.save(book)
     }
 
+    fun deleteByCustomer(customer: CustomerModel) {
+        val books = bookRepository.findByCustomer(customer)
+        for (book in books) {
+            book.status = BookStatus.DELETED
+        }
+        bookRepository.saveAll(books)
+    }
 }
