@@ -28,7 +28,7 @@ class BookService(
 
     fun delete(id: Int) {
         val book = findById(id)
-        book.status = BookStatus.CANCELED
+        book.status = BookStatus.DELETED
 
         update(book)
     }

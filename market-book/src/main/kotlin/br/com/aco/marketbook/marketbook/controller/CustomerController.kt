@@ -2,8 +2,9 @@ package br.com.aco.marketbook.marketbook.controller
 
 import br.com.aco.marketbook.marketbook.controller.request.PostCustomerRequest
 import br.com.aco.marketbook.marketbook.controller.request.PutCustomerRequest
+import br.com.aco.marketbook.marketbook.controller.response.CustomerResponse
 import br.com.aco.marketbook.marketbook.extension.toCustomerModel
-import br.com.aco.marketbook.marketbook.model.CustomerModel
+import br.com.aco.marketbook.marketbook.extension.toResponse
 import br.com.aco.marketbook.marketbook.service.CustomerService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -15,8 +16,8 @@ class CustomerController(
 ) {
 
     @GetMapping
-    fun getAllCustomer(@RequestParam name: String?): List<CustomerModel> {
-        return customerService.getAllCustomer(name)
+    fun getAllCustomer(@RequestParam name: String?): List<CustomerResponse> {
+        return customerService.getAllCustomer(name).map { it.toResponse() }
     }
 
     @PostMapping
@@ -26,8 +27,8 @@ class CustomerController(
     }
 
     @GetMapping("/{id}")
-    fun getCustomer(@PathVariable id: Int): CustomerModel {
-        return customerService.findById(id)
+    fun getCustomer(@PathVariable id: Int): CustomerResponse {
+        return customerService.findById(id).toResponse()
     }
 
     @PutMapping("/{id}")
