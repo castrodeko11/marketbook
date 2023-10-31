@@ -15,14 +15,10 @@ O
 -market-book/docker-compose/docker-compose.yml,0\9\09799c77bef13fd1b7517752e516ec3b8aeb833f
 ç
 ]market-book/src/main/kotlin/br/com/aco/marketbook/marketbook/controller/CustomerController.kt,3\6\366cc24abb4d8ee7fc2973059d292739ff7b8533
-ç
-]market-book/src/main/kotlin/br/com/aco/marketbook/marketbook/extension/PostCustomerRequest.kt,3\3\3349d5417b27c45f1a73585691c359d51c23e844
 á
 Wmarket-book/src/main/kotlin/br/com/aco/marketbook/marketbook/service/CustomerService.kt,b\2\b27e731903b00c075a0b8de92049089a3910ec9a
 Ö
 Umarket-book/src/main/kotlin/br/com/aco/marketbook/marketbook/MarketBookApplication.kt,1\8\18d3b96625ac65f0738ffda01c074939aa250954
-u
-Emarket-book/src/main/kotlin/br/com/aco/marketbook/enums/BookStatus.kt,f\f\ff9e217ec4b38ca7621f4104970efae9a6efd794
 
 Omarket-book/src/main/kotlin/br/com/aco/marketbook/marketbook/model/BookModel.kt,0\4\04d0410ae5cc26408e158c4c055ebd2c4f08c055
 É
@@ -31,3 +27,5 @@ Smarket-book/src/main/kotlin/br/com/aco/marketbook/marketbook/model/CustomerMode
 ]market-book/src/main/kotlin/br/com/aco/marketbook/marketbook/repository/CustomerRepository.kt,1\e\1e41e88613a08afd82f7bb5d1b0cc93a12bf83b7
 â
 Ymarket-book/src/main/kotlin/br/com/aco/marketbook/marketbook/repository/BookRepository.kt,d\8\d87f84e12ae461ca4a0eaf250e882725b621a064
+L
+market-book/build.gradle.kts,a\d\adf190b90d8788cc56aea6056eb44221e6cf7c70
