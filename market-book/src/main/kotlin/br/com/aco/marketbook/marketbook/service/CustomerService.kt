@@ -27,7 +27,8 @@ class CustomerService(
 
 
     fun findById(id: Int): CustomerModel {
-        return customerRepository.findById(id).orElseThrow{  NotFoundException(Erros.ML201.message.format(id), Erros.ML201.code) }
+        return customerRepository.findById(id)
+            .orElseThrow { NotFoundException(Erros.ML201.message.format(id), Erros.ML201.code) }
     }
 
     fun update(customer: CustomerModel) {
@@ -43,6 +44,10 @@ class CustomerService(
 
         customer.status = CustomerStatus.DISABLE
         customerRepository.save(customer)
+    }
+
+    fun isEmailAvailable(email: String): Boolean {
+        return !customerRepository.existsByEmail(email)
     }
 }
 
