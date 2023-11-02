@@ -1,6 +1,8 @@
 package br.com.aco.marketbook.marketbook.model
 
 import br.com.aco.marketbook.marketbook.enums.BookStatus
+import br.com.aco.marketbook.marketbook.enums.Erros
+import br.com.aco.marketbook.marketbook.exception.BadRequestException
 import jakarta.persistence.*
 import java.math.BigDecimal
 
@@ -26,7 +28,7 @@ data class BookModel(
     var status: BookStatus? = null
         set(value) {
             if (field == BookStatus.CANCELED || field == BookStatus.DELETED) {
-                throw Exception("Book cannot change status from ${field} to ${value}")
+                throw BadRequestException(Erros.ML102.message.format(field), Erros.ML102.code)
             }
             field = value
         }

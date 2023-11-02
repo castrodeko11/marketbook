@@ -1,6 +1,8 @@
 package br.com.aco.marketbook.marketbook.service
 
 import br.com.aco.marketbook.marketbook.enums.CustomerStatus
+import br.com.aco.marketbook.marketbook.enums.Erros
+import br.com.aco.marketbook.marketbook.exception.NotFoundException
 import br.com.aco.marketbook.marketbook.model.CustomerModel
 import br.com.aco.marketbook.marketbook.repository.CustomerRepository
 import org.springframework.stereotype.Service
@@ -25,7 +27,7 @@ class CustomerService(
 
 
     fun findById(id: Int): CustomerModel {
-        return customerRepository.findById(id).orElseThrow()
+        return customerRepository.findById(id).orElseThrow{  NotFoundException(Erros.ML201.message.format(id), Erros.ML201.code) }
     }
 
     fun update(customer: CustomerModel) {

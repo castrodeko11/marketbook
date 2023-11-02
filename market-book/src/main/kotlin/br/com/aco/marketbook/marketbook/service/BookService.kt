@@ -1,6 +1,7 @@
 package br.com.aco.marketbook.marketbook.service
 
 import br.com.aco.marketbook.marketbook.enums.BookStatus
+import br.com.aco.marketbook.marketbook.enums.Erros
 import br.com.aco.marketbook.marketbook.exception.NotFoundException
 import br.com.aco.marketbook.marketbook.model.BookModel
 import br.com.aco.marketbook.marketbook.model.CustomerModel
@@ -27,7 +28,7 @@ class BookService(
 
     fun findById(id: Int): BookModel {
         return bookRepository.findById(id).orElseThrow {
-            NotFoundException("Book [$id] not found", "MB-0001")
+            NotFoundException(Erros.ML101.message.format(id), Erros.ML101.code)
         }
     }
 
